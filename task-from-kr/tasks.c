@@ -12,7 +12,7 @@ int main()
     char arraySymbol[N] = {0};
     // ввод слова с клавиатуры
     char c;
-    while ((c = getchar()))
+    while (c = getchar())
     {
         // обработка символа
         if (c >= 'A' && c <= 'z')
@@ -37,17 +37,22 @@ int main()
             }
         }
     }
-    
+
     // теперь надо вывести гистограмму
     for (int i = 1; i < N; ++i)
     {
-
         if (counters[i] > 0)
         {
-            printf("%d: %d\n", i, counters[i]);
+            printf("%d: ", i);
+            // выводится 1 раз
+            putchar(symbol);
+            printf("\n");
         }
-        
     }
+    //     for (int j = 0; j < N; ++j)
+    //    {
+    //       putchar(symbol);
+    //    }
 }
 
 // сделать вывод звездочкой, звездочка задает длину
