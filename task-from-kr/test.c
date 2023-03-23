@@ -1,42 +1,29 @@
 #include <stdio.h>
 
-// ты если не хочешь говорить -- не говори, зачем говорить "а все тебе расскажи"
-// а хочу ли я такое общество? хочу ли я общаться с такими людьми? я не хочу такое общество, я не хочу общаться
-// с такими людьми как они. Работа правда приятная? Нет
-// int power(int m, int n);
-
-int main()
+int detab(void)
 {
+   char const stopTab = ' ';
+   int c;
+   char const n = '4';
 
-   // int i;
-   // for (i = 0; i < 10; ++i)
-   //    printf("[%d] %d %d \n", i, power(2, i), power(-3, i));
-   // return 0;
-   int n = 0;
-   int count = 0;
-   char asciiChar = '*';
-
-   // first task
-   for (int i = 0; i < 5; ++i)
+   while ((c = getchar()) != EOF)
    {
-      putchar(asciiChar);
-      
-   }
-   printf("\n");
-   scanf("%d", &n);
-   for (int j = 0; j < n; ++j)
-   {
-      putchar(asciiChar);
+      if (c == n || c == '\t')
+      {
+         c = stopTab;
+      }
+      printf("%c", c);
    }
 }
-// int power(int base, int n)
-// {
-//    int i, p;
-//    p = 1;
-//    for (i = 1; i <= n; ++i)
-//       p = p * base;
-//       // p is changed on every iterarion
-//       printf("P is %d\n", p);
-//    return p;
+// как задать расстояние n (диапазон?)
+// 
+int main()
+{
+   detab();
+}
 
-// }
+/*
+Напишите программу detab, заменяющую символы табуляции во вводимом тексте нужным
+числом пробелов (до следующего "стопа" табуляции). Предполагается, что "стопы" табуляции расставлены на
+фиксированном расстоянии друг от друга, скажем, через n позиций. Как лучше задавать n — в виде значения
+переменной или в виде именованной константы */

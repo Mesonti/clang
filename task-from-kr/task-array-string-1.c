@@ -2,51 +2,56 @@
 
 #define MAXLINE 1000 /* максимальный размер вводимой строки */
 
-int getline(char linef[], int maxline);
-void copy(char to[], char fromf[]);
+int max;               /* длина максимальной из просмотренных строк */
+char line[MAXLINE];    /* текущая строка */
+char longest[MAXLINE]; /* самая длинная строка */
 
-/* печать самой длинной строки */
-int main()
+int getline(void);
+void copy(void);
+
+/* печать самой длинной строки; специализированная версия */
+main()
 {
-    int len;               /* длина текущей строки */
-    int max;               /* длина максимальной из просмотренных строк */
-    char line[MAXLINE];    /* текущая строка */
-    char longest[MAXLINE]; /* самая длинная строка */
+    int len;
+    extern int max;
+    extern char longest[];
     max = 0;
-    while ((len = getline(line, MAXLINE)) > 0)
+    while ((len = getline()) > 0)
         if (len > max)
         {
             max = len;
-            copy(longest, line);
+            copy();
         }
-    if (max > 0) /* была ли хоть одна строка? */
-        printf("Line is %s", longest);
+    if (max > 0) /* была хотя бы одна строка */
+        printf("%s", longest);
     return 0;
 }
 
-/* getline: читает строку в s, возвращает длину */
-int getline(char s[], int lim)
+/* getline: специализированная версия */
+int getline(void)
 {
     int c, i;
-    for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
+    extern char line[];
+    for (i = 0; i < MAXLINE - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
     {
-        s[i] = c;
+        line[i] = c;
     }
-    // для чего это условие?
+
     if (c == '\n')
     {
-        s[i] = c;
+        line[i] = c;
         ++i;
     }
-    s[i] = '\0';
+    line[i] = '\0';
     return i;
 }
 
-/* copy: копирует из 'from' в 'to'; to достаточно большой */
-void copy(char to[], char from[])
+/* copy: специализированная версия */
+void copy(void)
 {
     int i;
+    extern char line[], longest[];
     i = 0;
-    while ((to[i] = from[i]) != '\0')
+    while ((longest[i] = line[i]) != '\0')
         ++i;
 }
