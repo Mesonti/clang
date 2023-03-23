@@ -1,14 +1,16 @@
 #include <stdio.h>
 
+#define n 6
+
 int detab(void)
 {
    char const stopTab = ' ';
    int c;
-   char const n = '4';
 
    while ((c = getchar()) != EOF)
    {
-      if (c == n || c == '\t')
+      
+      if (c >= n && c <= n || c == '\t')
       {
          c = stopTab;
       }
@@ -16,7 +18,7 @@ int detab(void)
    }
 }
 // как задать расстояние n (диапазон?)
-// 
+// как сделать чтобы stopTab срабатывал единожды, а не на каждой итерации 
 int main()
 {
    detab();
