@@ -1,57 +1,48 @@
 #include <stdio.h>
 
-#define MAXLINE 1000 /* максимальный размер вводимой строки */
+#define MAXLINE 1000
 
-int max;               /* длина максимальной из просмотренных строк */
-char line[MAXLINE];    /* текущая строка */
-char longest[MAXLINE]; /* самая длинная строка */
+int getline(char linef[], int MAXLINE);
+void copy(char to[], char fromf[]);
 
-int getline(void);
-void copy(void);
-
-/* печать самой длинной строки; специализированная версия */
-main()
+/* печать самой длинной строки */
+int main()
 {
-    int len;
-    extern int max;
-    extern char longest[];
+    int len;               /* длина текущей строки */
+    int max;               /* длина максимальной из просмотренных строк */
+    char line[MAXLINE];    /* текущая строка */
+    char longest[MAXLINE]; /* самая длинная строка */
     max = 0;
-    while ((len = getline()) > 0)
+    while ((len = getline(line, MAXLINE)) > 0)
         if (len > max)
         {
             max = len;
-            copy();
+            copy(longest, line);
         }
-    if (max > 0) /* была хотя бы одна строка */
+    if (max > 0) /* была ли хоть одна строка? */
         printf("%s", longest);
     return 0;
 }
-
-/* getline: специализированная версия */
-int getline(void)
+/* getline: читает строку в s, возвращает длину */
+int getline(char s[], int lim)
 {
     int c, i;
-    extern char line[];
-    for (i = 0; i < MAXLINE - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
-    {
-        line[i] = c;
-    }
-
+    for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
+        s[i] = c;
     if (c == '\n')
+        ;
     {
-        line[i] = c;
+        s[i] = c;
         ++i;
     }
-    line[i] = '\0';
+    s[i] = '\0';
     return i;
 }
-
-/* copy: специализированная версия */
-void copy(void)
+/* copy: копирует из 'from' в 'to'; to достаточно большой */
+void copy(char to[], char from[])
 {
     int i;
-    extern char line[], longest[];
     i = 0;
-    while ((longest[i] = line[i]) != '\0')
+    while ((to[i] = from[i]) != '\0')
         ++i;
 }
