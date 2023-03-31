@@ -1,30 +1,26 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define TABSTOP 4
 
 int main()
 {
-    int c;
-    int position = 0; // current position in stroke
-    while ((c = getchar()) != EOF)
+    int currentChar;
+    int previousChar = '\0'; // для понимания повторяется ли он или нет
+    while ((currentChar = getchar()) != EOF)
     {
-
-        if (c == '\t' || c == ' ') // на табы срабатывает, а вот на пробелы, так как пробелов несколько, я задал условие для одного пробела
-        // значит нужно вычислить кол-во пробелов в строке
+        if (currentChar == '\t')
         {
-            c = '\0';
+            currentChar = '\0';
             putchar(' ');
         }
 
-        else if (c == '\n')
+        if (previousChar == currentChar && currentChar == ' ')
         {
-            putchar(c);
-            c = 0;
+            continue;
         }
-        else
-        {
-            putchar(c);
-        }
+        putchar(currentChar); // положил пробел
+        previousChar = currentChar;
     }
     return 0;
 }
@@ -37,4 +33,5 @@ int main()
 Напишите программу entab, заменяющую строки из пробелов минимальным числом
 табуляций и пробелов таким образом, чтобы вид напечатанного текста не изменился. Используйте те же
 "стопы" табуляции, что и в detab. В случае, когда для выхода на очередной "стоп" годится один пробел, что
-лучше — пробел или табуляция*/
+лучше — пробел или табуляция
+// я не понимаю для чего стопы*/
