@@ -11,16 +11,11 @@ int main()
     while ((currentChar = getchar()) != EOF)
     {
         ++counter;
-        // printf("position: %d\n", pos);
-        // a qui
-        // ck br
-        // own f
-        // ox
         if (currentChar == '\t' || currentChar == ' ' && currentChar == '\0')
         {
             currentChar = ' ';
         }
-        
+
         if (counter > position)
         {
             putchar(':');
