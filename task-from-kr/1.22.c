@@ -11,7 +11,7 @@ int main()
     while ((currentChar = getchar()) != EOF)
     {
         ++counter;
-        if (currentChar == '\t' || currentChar == ' ' && currentChar == '\0')
+        if (currentChar == '\t' || currentChar == ' ' || currentChar == '\0')
         {
             currentChar = ' ';
         }
