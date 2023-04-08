@@ -1,45 +1,30 @@
 #include <stdio.h>
-
-#define MAXLINE 5 // максимальная длина строки
+#include <limits.h>
+#include <float.h>
 
 int main()
 {
-    int c, pos;
-    pos = 0; // текущая позиция в строке
-    char line[MAXLINE]; // текущая строка
-    while ((c = getchar()) != EOF) {
-        if (pos == MAXLINE-1 || c == '\n') { // если достигнут конец строки или символ новой строки
-            if (pos == MAXLINE-1 && c != '\n') { // если строка превышает максимальную длину, и не заканчивается символом новой строки
-                int i = pos-1;
-                while (i >= 0 && line[i] != ' ' && line[i] != '\t') { // ищем последний символ-разделитель перед n-й позицией
-                    i--;
-                }
-                if (i >= 0) { // если нашли символ-разделитель, выводим строку до него
-                    for (int j = 0; j <= i; j++) {
-                        putchar(line[j]);
-                    }
-                    putchar('\n'); // переносим строку на следующую
-                    for (int j = i+1; j < pos; j++) { // переносим оставшуюся часть строки на следующую строку
-                        line[j-i-1] = line[j];
-                    }
-                    pos = pos-i-1;
-                } else { // если не нашли символ-разделитель, выводим всю строку
-                    line[pos] = '\0';
-                    printf("%s\n", line);
-                    pos = 0;
-                }
-            } else { // если строка не превышает максимальную длину, выводим всю строку
-                line[pos] = '\0';
-                printf("%s", line);
-                if (c == '\n') { // если строка заканчивается символом новой строки, выводим его
-                    putchar(c);
-                }
-                pos = 0;
-            }
-        } else { // если строка не закончилась, продолжаем ее заполнять
-            line[pos] = c;
-            pos++;
-        }
-    }
-    return 0;
+    // char, short, int, long
+    // signed | unsigned
+    printf("Long ");
+    printf("%d %d\n", LONG_MIN, LONG_MAX);
+    printf("0 %u\n", ULLONG_MAX);
+
+    printf("Int ");
+    printf("%d %d\n", INT_MIN, INT_MAX);
+    printf("0 %u\n", UINT_MAX);
+
+
+    printf("Char ");
+    printf("%d %d\n", CHAR_MIN, CHAR_MAX); // -128 127
+    printf("0 %u\n", UCHAR_MAX);
+
+    printf("Short ");
+    printf("%d %d\n", SHRT_MIN, SHRT_MAX);
+    printf("0 %u", USHRT_MAX);
+
+    
+
+
+
 }
