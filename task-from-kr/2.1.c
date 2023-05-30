@@ -7,8 +7,8 @@ int main()
     // char, short, int, long
     // signed | unsigned
     printf("Long ");
-    printf("%d %d\n", LONG_MIN, LONG_MAX); // -2147483648 2147483647
-    printf("Unsigned 0 %u\n", ULLONG_MAX);
+    printf("%ld %ld\n", LONG_MIN, LONG_MAX); // -2147483648 2147483647
+    printf("Unsigned 0 %llu\n", ULLONG_MAX);
 
     printf("Int ");
     printf("%d %d\n", INT_MIN, INT_MAX); // -2147483648 2147483647
@@ -20,16 +20,15 @@ int main()
 
     printf("Short ");
     printf("%d %d\n", SHRT_MIN, SHRT_MAX); // -32768 32767
-    printf("Unsigned 0 %u\n", USHRT_MAX);
-    printf("%d\n", sizeof(short));
+    printf("Unsigned Short 0 %u\n", USHRT_MAX);
 
     printf("Float: ");
-    printf("%d\n", FLT_MAX);
-    printf("Unsigned: %u\n", FLT_MAX);
+    printf("%f\n", FLT_MAX);
+    printf("Unsigned float: %f\n", FLT_MAX);
 
     printf("Double: ");
     printf("%d\n", DBL_MAX_10_EXP);
-    printf("Unsigned: %u", DBL_MAX);
+    printf("Unsigned double: %f", DBL_MAX);
 
     // 1 byte = 8 bit
     // 8 bit = 255 value;

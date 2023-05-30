@@ -1,10 +1,30 @@
 #include <stdio.h>
-#include <stdlib.h>
+// #include <stdlib.h>
+#include <string.h>
+
+int atoi(char s[])
+{
+    int i, n;
+    n = 0;
+    for (i = 0; s[i] >= '0' && s[i] <= '9'; ++i)
+    {
+        n = 10 * n + (s[i] - '0');
+    }
+    return n;
+}
+
+int lower(int c)
+{
+    if (c >= 'A' && c <= 'Z')
+    {
+        return c + 'a' - 'A';
+    }
+    else
+    {
+        return c;
+    }
+}
 
 int main()
 {
-    int a;
-    int b = 0;
-    int c;
-    printf("%d %d %d", a, b, c);
 }
